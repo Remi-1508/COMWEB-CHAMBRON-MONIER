@@ -66,3 +66,70 @@ class AuthService {
 }
 
 export const authService = new AuthService();
+
+/*
+Code à mettre dans le fichier authService.js après avoir connecté l'api
+
+import { apiClient } from '../api/axios'; 
+import { User, UserRoles } from '../../models/User'; 
+class AuthService { 
+    // Méthode de connexion 
+    async login(username, password) { 
+        try { 
+            const response = await apiClient.post('/auth/login', { username, password }); 
+            if (response.data.token) { 
+                // Stocke les données de l'utilisateur dans le localStorage 
+                localStorage.setItem('user', JSON.stringify(response.data)); 
+                // Crée un objet User à partir des données reçues 
+                const user = new User( 
+                    response.data.id, 
+                    response.data.username, 
+                    response.data.role, 
+                    response.data.token 
+                ); 
+                return user; 
+            } 
+            return null; 
+        } catch (error) { 
+            console.error('Login error:', error); 
+            throw error; 
+        } 
+    } 
+    // Méthode de déconnexion 
+    logout() { 
+        localStorage.removeItem('user'); 
+    } 
+    // Récupère l'utilisateur courant depuis le localStorage 
+    getCurrentUser() { 
+        const userStr = localStorage.getItem('user'); 
+        if (!userStr) return null; 
+        const userData = JSON.parse(userStr); 
+        return new User( 
+            userData.id, 
+            userData.username, 
+            userData.role, 
+            userData.token 
+        ); 
+    } 
+    // Vérifie si l'utilisateur est connecté 
+    isLoggedIn() { 
+        return this.getCurrentUser() !== null; 
+    } 
+    // Vérifie si l'utilisateur a un rôle spécifique 
+    hasRole(role) { 
+        const user = this.getCurrentUser(); 
+        return user && user.role === role; 
+    } 
+    // Vérifie si l'utilisateur est un étudiant 
+    isStudent() { 
+        return this.hasRole(UserRoles.STUDENT); 
+    } 
+    // Vérifie si l'utilisateur est un enseignant 
+    isTeacher() { 
+        return this.hasRole(UserRoles.TEACHER); 
+    } 
+} 
+// Exporte une instance unique du service 
+export const authService = new AuthService(); 
+*/
+
