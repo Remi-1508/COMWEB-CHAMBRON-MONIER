@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header style={{
-      background: '#2660B8', // Bleu plus foncé pastel
+      background: '#2660B8', 
       padding: '10px 20px',
       display: 'flex',
       alignItems: 'center',
@@ -51,10 +51,10 @@ const Header = () => {
   );
 };
 
-// Nouveau style des boutons
+
 const navButtonStyle = {
-  background: '#2660B8', // même bleu que le header
-  border: '1px solid #FFFFFF', // bleu foncé très fin
+  background: '#2660B8', 
+  border: '1px solid #FFFFFF', 
   borderRadius: '6px',
   padding: '6px 14px',
   color: '#fff',
