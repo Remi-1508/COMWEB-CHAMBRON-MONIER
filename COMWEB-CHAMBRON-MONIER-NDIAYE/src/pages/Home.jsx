@@ -51,14 +51,6 @@ export default function Home() {
             required
             style={inputStyle}
           />
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            style={inputStyle}
-          >
-            <option value="student">Élève</option>
-            <option value="teacher">Professeur</option>
-          </select>
           <button type="submit" style={buttonStyle}>Se connecter</button>
         </form>
       </div>
