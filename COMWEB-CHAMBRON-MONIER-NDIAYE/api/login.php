@@ -1,10 +1,8 @@
 <?php
-// ⚠️ Pour le développement uniquement : Affiche les erreurs PHP
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// En-têtes CORS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -56,7 +54,6 @@ function verifierProf($pdo, $email, $mdp) {
 }
 
 function recupererMatieresEtEleves($pdo, $prof_id) {
-    // On récupère les matières enseignées par ce prof via la table de liaison "enseignements"
     $sqlMatieres = "
         SELECT m.id, m.nom_matiere
         FROM matieres m
@@ -68,7 +65,6 @@ function recupererMatieresEtEleves($pdo, $prof_id) {
     $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($matieres as &$matiere) {
-        // Récupère les élèves et leurs notes pour cette matière
         $sqlEleves = "
             SELECT e.id, e.nom, e.prenom, n.note
             FROM eleves e
@@ -82,7 +78,6 @@ function recupererMatieresEtEleves($pdo, $prof_id) {
     return $matieres;
 }
 
-// ---------- POINT D’ENTRÉE ----------
 if (empty($_GET['email']) || empty($_GET['mot_de_passe'])) {
     envoiJSON(["statut" => "erreur", "message" => "Paramètres manquants"]);
     exit;
@@ -104,7 +99,6 @@ if ($eleve) {
     exit;
 }
 
-// 🔧 ✅ AJOUT MANQUANT ICI
 $prof = verifierProf($pdo, $email, $mdp);
 if ($prof) {
     $matieres = recupererMatieresEtEleves($pdo, $prof['id']);
