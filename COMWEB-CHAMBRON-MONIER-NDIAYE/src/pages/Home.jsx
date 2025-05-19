@@ -7,7 +7,7 @@ export default function Home() {
   const { login, currentUser } = useAuth();
   const [email, setEmail] = useState('');
   const [mdp, setMdp] = useState('');
-  const [role, setRole] = useState('student'); // par défaut Élève
+  const [role, setRole] = useState('student'); 
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ export default function Home() {
     e.preventDefault();
     setError('');
     try {
-      await login(email, mdp, role); // Assure-toi que `login` accepte aussi `role` si nécessaire
+      await login(email, mdp, role); 
     } catch (err) {
       setError(err.message);
     }
