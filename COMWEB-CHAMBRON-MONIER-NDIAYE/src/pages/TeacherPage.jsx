@@ -6,7 +6,7 @@ export default function TeacherPage() {
   const { currentUser } = useAuth();
   const matieres = currentUser?.matieres || [];
 
-  // État local pour contrôler quels accordéons sont ouverts
+  
   const [openMatiereIds, setOpenMatiereIds] = useState([]);
 
   const toggleMatiere = (id) => {
