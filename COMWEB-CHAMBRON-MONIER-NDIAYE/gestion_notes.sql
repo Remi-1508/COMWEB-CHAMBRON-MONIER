@@ -208,12 +208,6 @@ ALTER TABLE `professeurs`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Index pour la table `prof_matieres`
---
-ALTER TABLE `prof_matieres`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `professeur_id` (`professeur_id`),
-  ADD KEY `matiere_id` (`matiere_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -250,10 +244,6 @@ ALTER TABLE `professeurs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `prof_matieres`
---
-ALTER TABLE `prof_matieres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
@@ -274,12 +264,6 @@ ALTER TABLE `notes`
   ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`matiere_id`) REFERENCES `matieres` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `prof_matieres`
---
-ALTER TABLE `prof_matieres`
-  ADD CONSTRAINT `prof_matieres_ibfk_1` FOREIGN KEY (`professeur_id`) REFERENCES `professeurs` (`id`),
-  ADD CONSTRAINT `prof_matieres_ibfk_2` FOREIGN KEY (`matiere_id`) REFERENCES `matieres` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
