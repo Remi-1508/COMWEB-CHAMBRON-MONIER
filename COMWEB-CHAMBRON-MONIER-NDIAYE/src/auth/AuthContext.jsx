@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const login = async (email, password) => {
-    const res = await fetch(`http://localhost/testcomweb/api/login.php?email=${encodeURIComponent(email)}&mot_de_passe=${encodeURIComponent(password)}`);
+    const res = await fetch(`https://remonier.zzz.bordeaux-inp.fr/login.php?email=${encodeURIComponent(email)}&mot_de_passe=${encodeURIComponent(password)}`);
     const data = await res.json();
 
     if (data.statut === 'ok') {

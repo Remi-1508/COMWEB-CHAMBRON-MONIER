@@ -8,21 +8,21 @@ error_reporting(E_ALL);
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
 function envoiJSON($tab) {
-    header('Content-Type: application/json');
     echo json_encode($tab, JSON_UNESCAPED_UNICODE);
 }
 
 function connexionBDD() {
     $host = 'localhost';
-    $dbname = 'gestion_notes';
-    $username = 'root';
-    $password = '';
+    $dbname = 'remonier';
+    $username = 'remonier';
+    $password = 'remimonierbdd';
 
     try {
         return new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
